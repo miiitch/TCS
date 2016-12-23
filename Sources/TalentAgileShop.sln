@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAgileShop.Data", "Tal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAgileShop.Cart", "TalentAgileShop.Cart\TalentAgileShop.Cart.csproj", "{05F0EA39-0549-4356-A9C3-74D3DA6C6FE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAgileShop.Cart.Tests", "TalentAgileShop.Cart.Tests\TalentAgileShop.Cart.Tests.csproj", "{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{121813CE-6ACE-4899-BA4A-EBB73515011E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{05F0EA39-0549-4356-A9C3-74D3DA6C6FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F0EA39-0549-4356-A9C3-74D3DA6C6FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F0EA39-0549-4356-A9C3-74D3DA6C6FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDCC768D-A365-4C64-9FA0-EAA5055CDCB2} = {121813CE-6ACE-4899-BA4A-EBB73515011E}
 	EndGlobalSection
 EndGlobal
