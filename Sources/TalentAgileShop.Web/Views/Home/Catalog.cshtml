@@ -1,3 +1,17 @@
-﻿@{
+﻿@model TalentAgileShop.Web.Models.CatalogViewModel
+@{
     ViewBag.Title = "Catalog";
 }
+
+<div class="container-fluid">
+    @foreach (var product in Model.Products)
+    {
+
+        <div class="row">
+            <div class="col-md-10"><a href="@Url.Action("Product",new {id = product.Id})">@product.Name</a></div>
+            <div class="col-md-2">@product.Price</div>
+        </div>
+
+    }
+
+</div>
