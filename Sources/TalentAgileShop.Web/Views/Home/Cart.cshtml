@@ -1,4 +1,88 @@
-﻿@{
-    ViewBag.Title = "Your cart";
+﻿
+@model TalentAgileShop.Web.Models.CartViewModel
+@{
+    ViewBag.Title = "Your Cart";
+
+    var cartApiUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/_api/cart";
+    var total = @Model.Price.ProductTotal + @Model.Price.Delivery - @Model.Price.DeliveryDiscount - @Model.Price.ProductDiscount;
 }
 
+
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Count</th>
+                <th>Add/Remove</th>                  
+                <th>Unit Price</th>
+            </tr>
+
+
+        </thead>
+        <tbody>
+
+
+            @foreach (var productTuple in Model.Products)
+            {
+                <tr data-productid="@productTuple.Item1.Id">
+                    <td>@productTuple.Item1.Name</td>
+                <td class="count">
+                    @productTuple.Item2
+                </td>
+                <td>
+                        <a class="addbtn btn btn-xs btn-success">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+
+                            </span>
+                        </a>
+                        <a class="removebtn btn btn-xs btn-danger">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true">
+
+                            </span>
+                        </a>
+                    </td>
+                    <td class="col-md-2 col-md-offset-2">@productTuple.Item1.Price €</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4"><b>Delivery:</b></div>
+        <div class="col-md-2" id="delivery">@Model.Price.Delivery €</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4"><b>Product Discount:</b></div>
+        <div class="col-md-2" id="productDiscount">@Model.Price.ProductDiscount €</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4"><b>Delivery Discount:</b></div>
+        <div class="col-md-2" id="deliveryDiscount">@Model.Price.DeliveryDiscount €</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4"><h3><b>Total:</b></h3></div>
+        <div class="col-md-2" id="total"><h3>@total €</h3></div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+
+
+    <script type="text/javascript">
+
+        var cartApiUrl = "@cartApiUrl";
+    </script>
+    <script src="~/Scripts/site/log.js">
+    </script>
+    <script src="~/Scripts/site/cart.js">
+    </script>
+
+}

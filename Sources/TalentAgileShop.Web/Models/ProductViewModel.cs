@@ -13,4 +13,5 @@ namespace TalentAgileShop.Web.Models
 
 
     }
+
 }

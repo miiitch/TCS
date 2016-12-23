@@ -1,5 +1,8 @@
+using Repo;
+using TalentAgileShop.Cart;
 using TalentAgileShop.Model;
 using TalentAgileShop.Data;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TalentAgileShop.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(TalentAgileShop.Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -12,6 +15,7 @@ namespace TalentAgileShop.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.WebApi;
 
     public static class NinjectWebCommon
     {
@@ -48,6 +52,8 @@ namespace TalentAgileShop.Web.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -69,6 +75,17 @@ namespace TalentAgileShop.Web.App_Start
 
             kernel.Bind<FeatureSet>()
                 .ToConstant(featureSet);
+
+
+            kernel
+            .Bind<ICartRepository>()
+            .To<InMemoryCartRepository>()
+            .InSingletonScope();
+
+            kernel
+             .Bind<ICartPriceCalculator>()
+             .To<CartPriceCalculator>()
+             .InSingletonScope();
 
 
             kernel

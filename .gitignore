@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Sources/TalentAgileShop.Web/Scripts/site/*.js
+/Sources/TalentAgileShop.Web/Scripts/site/*.js.map
+

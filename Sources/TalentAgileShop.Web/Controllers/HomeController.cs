@@ -14,11 +14,15 @@ namespace TalentAgileShop.Web.Controllers
     {
         private readonly FeatureSet _featureSet;
         private readonly IDataContext _dataContext;
+        private readonly ICartRepository _cartRepository;
+        private readonly ICartPriceCalculator _cartPriceCalculator;
 
-        public HomeController(FeatureSet featureSet, IDataContext dataContext)
+        public HomeController(FeatureSet featureSet, IDataContext dataContext, ICartRepository cartRepository, ICartPriceCalculator cartPriceCalculator)
         {
             _featureSet = featureSet;
             _dataContext = dataContext;
+            _cartRepository = cartRepository;
+            _cartPriceCalculator = cartPriceCalculator;
         }
 
 
@@ -76,9 +80,34 @@ namespace TalentAgileShop.Web.Controllers
         [Route("cart")]
         public ActionResult Cart()
         {
-            ViewBag.Message = "Cart";
+            var basket = GetBasket();
 
-            return View();
+            var products = _dataContext.GetCartProducts(basket);
+
+            var price = _cartPriceCalculator.ComputePrice(products);
+
+
+            return View(new CartViewModel(products, price));
+        }
+
+        private Model.Cart GetBasket()
+        {
+            var cookie = Request.Cookies.Get("cart-id");
+
+
+            if (cookie == null)
+            {
+                return new Model.Cart();
+            }
+
+            var id = cookie.Value;
+
+            if (id == null)
+            {
+                return new Model.Cart();
+            }
+
+            return _cartRepository.Get(id);
         }
     }
 }

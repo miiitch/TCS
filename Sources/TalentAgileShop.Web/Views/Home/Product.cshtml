@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = Model.Product.Name;
 
-    var basketApiUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/api/basket";
+    var apiUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/_api/cart";
 }
 
 
@@ -20,7 +20,7 @@
             <h4>Item size : @Model.Product.Size</h4>
             <h4>Category : @Model.Product.Category.Name</h4>
             <h4>Origin : @Model.Product.Origin.Name</h4>
-            <a class="btn btn-default btn-primary" id="addToBasketButton">Add to basket</a>
+            <a class="btn btn-default btn-primary" id="addToCartButton">Add to cart</a>
         </div>
     </div>
 </div>
@@ -29,7 +29,7 @@
 {
     <script type="text/javascript">
         var productId = "@Model.Product.Id";
-        var basketApiUrl = "@basketApiUrl";
+        var cartApiUrl = "@apiUrl";
     </script>
     <script src="~/Scripts/site/log.js">
     </script>

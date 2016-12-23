@@ -49,14 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
+    <Compile Include="CartPrice.cs" />
+    <Compile Include="CartProduct.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Feature.cs" />
+    <Compile Include="ICartPriceCalculator.cs" />
+    <Compile Include="ICartRepository.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductImage.cs" />
     <Compile Include="ProductSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
