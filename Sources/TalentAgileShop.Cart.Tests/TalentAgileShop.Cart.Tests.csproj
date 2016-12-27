@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="InMemoryCartTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Step1CartCalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
