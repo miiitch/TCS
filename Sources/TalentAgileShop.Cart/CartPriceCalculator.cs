@@ -9,13 +9,17 @@ namespace Repo
     {
    
 
-        public CartPrice ComputePrice(List<Tuple<Product, int>> products)
+        public CartPrice ComputePrice(List<Tuple<Product, int>> products, string discountCode)
         {
             var result = new CartPrice();
 
-            result.ProductTotal = products.Sum(p => p.Item1.Price * p.Item2);
-
-
+            result.Products = products.Sum(p => p.Item1.Price * p.Item2);
+            result.Delivery = products.Sum(p => p.Item2) * 10;
+            if (discountCode != null)
+            {
+                result.InvalidDiscountCode = discountCode != "TEST";
+            }
+            
             return result;
         }
     }

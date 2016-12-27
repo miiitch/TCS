@@ -5,6 +5,6 @@ namespace TalentAgileShop.Model
 {
     public interface ICartPriceCalculator
     {
-        CartPrice ComputePrice(List<Tuple<Product, int>> products);
+        CartPrice ComputePrice(List<Tuple<Product, int>> products,string discountCode);
     }
 }

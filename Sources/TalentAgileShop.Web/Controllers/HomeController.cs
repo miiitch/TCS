@@ -106,16 +106,16 @@ namespace TalentAgileShop.Web.Controllers
 
 
         [System.Web.Mvc.Route("cart")]
-        public ActionResult Cart()
+        public ActionResult Cart(string discountCode)
         {
             var basket = GetBasket();
 
             var products = _dataContext.GetCartProducts(basket);
 
-            var price = _cartPriceCalculator.ComputePrice(products);
+            var price = _cartPriceCalculator.ComputePrice(products, discountCode);
 
 
-            return View(new CartViewModel(products, price));
+            return View(new CartViewModel(products, price) { DiscountCode = discountCode});
         }
 
         private Model.Cart GetBasket()

@@ -4,10 +4,18 @@
     ViewBag.Title = "Your Cart";
 
     var cartApiUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/_api/cart";
-    var total = @Model.Price.ProductTotal + @Model.Price.Delivery - @Model.Price.DeliveryDiscount - @Model.Price.ProductDiscount;
+    var total = @Model.Price.Products + @Model.Price.Delivery;
 }
 
+@if ((!string.IsNullOrWhiteSpace(Model.DiscountCode)) && Model.Price.InvalidDiscountCode)
+{
+    <div class="container">
+        <div class="alert alert-danger invalidDiscountCodeAlert"> '@Model.DiscountCode' is not a valid discount code
+       
+        </div>
+    </div>
 
+}
 
 <div class="container">
     <table class="table table-hover">
@@ -15,7 +23,7 @@
             <tr>
                 <th>Product</th>
                 <th>Count</th>
-                <th>Add/Remove</th>                  
+                <th>Add/Remove</th>
                 <th>Unit Price</th>
             </tr>
 
@@ -28,10 +36,10 @@
             {
                 <tr data-productid="@productTuple.Item1.Id">
                     <td>@productTuple.Item1.Name</td>
-                <td class="count">
-                    @productTuple.Item2
-                </td>
-                <td>
+                    <td class="count">
+                        @productTuple.Item2
+                    </td>
+                    <td>
                         <a class="addbtn btn btn-xs btn-success">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true">
 
@@ -50,27 +58,45 @@
     </table>
 
 </div>
+
 <div class="container" style="margin-top: 50px;">
     <div class="row">
-        <div class="col-md-offset-6 col-md-4"><b>Delivery:</b></div>
+        <div class="col-md-offset-6 col-md-4"><b>Discount code:</b></div>
+        <div class="col-md-2" id="products">@Model.DiscountCode</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4">
+            <b>Products:</b>
+        </div>
+        <div class="col-md-2" id="products">@Model.Price.Products €</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4">
+            <b>Delivery:</b>
+        </div>
         <div class="col-md-2" id="delivery">@Model.Price.Delivery €</div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-6 col-md-4"><b>Product Discount:</b></div>
-        <div class="col-md-2" id="productDiscount">@Model.Price.ProductDiscount €</div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-6 col-md-4"><b>Delivery Discount:</b></div>
-        <div class="col-md-2" id="deliveryDiscount">@Model.Price.DeliveryDiscount €</div>
     </div>
 
     <div class="row">
-        <div class="col-md-offset-6 col-md-4"><h3><b>Total:</b></h3></div>
-        <div class="col-md-2" id="total"><h3>@total €</h3></div>
+        <div class="col-md-offset-6 col-md-4">
+            <h3>
+                <b>Total:</b>
+            </h3>
+        </div>
+        <div class="col-md-2">
+            <h3 id="total">@total €</h3>
+        </div>
     </div>
 </div>
 
-
+<div class="container" style="margin-top: 50px;">
+    <form action="@Url.Action("Cart", "Home")" method="get" target="_blank">
+        <div class="row">
+            <div class="col-md-3"><input type="text" name="discountCode" value="@Model.DiscountCode"><br></div>
+            <div class="col-md-3"><input type="submit" class="btn btn-default" value="Change code" /></div>
+        </div>
+    </form>
+</div>
 
 @section scripts
 {
@@ -79,6 +105,7 @@
     <script type="text/javascript">
 
         var cartApiUrl = "@cartApiUrl";
+        var discountCode = "@Model.DiscountCode";
     </script>
     <script src="~/Scripts/site/log.js">
     </script>

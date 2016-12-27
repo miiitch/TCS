@@ -9,7 +9,7 @@ namespace TalentAgileShop.Web.Models
         public List<Tuple<Product, int>> Products { get; }
         public CartPrice Price { get; }
 
-
+        public string DiscountCode { get; set; }
 
 
         public CartViewModel(List<Tuple<Product, int>> products, CartPrice price)

@@ -107,7 +107,7 @@ namespace TalentAgileShop.Web.Controllers
 
         }
         [System.Web.Http.Route("price")]
-        public IHttpActionResult GetCartPrice()
+        public IHttpActionResult GetCartPrice(string discountCode)
         {
 
             var id = GetCookieId();
@@ -118,7 +118,7 @@ namespace TalentAgileShop.Web.Controllers
 
             var products = _dataContext.GetCartProducts(cart);
 
-            var price = _priceCalculator.ComputePrice(products);
+            var price = _priceCalculator.ComputePrice(products, discountCode);
 
             return Ok(price);
         }

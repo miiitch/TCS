@@ -4,10 +4,8 @@ namespace TalentAgileShop.Model
     {
         public decimal Delivery { get; set; }
 
-        public decimal DeliveryDiscount { get; set; }
+        public decimal Products { get; set; }
 
-        public decimal ProductDiscount { get; set; }
-
-        public decimal ProductTotal { get; set; }
+        public bool InvalidDiscountCode { get; set; }
     }
 }

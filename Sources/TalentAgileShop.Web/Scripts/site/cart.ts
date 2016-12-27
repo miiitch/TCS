@@ -2,9 +2,7 @@
 // ReSharper disable InconsistentNaming
 interface IPrice {    
     Delivery: number;
-    DeliveryDiscount: number;
-    ProductDiscount: number;
-    ProductTotal: number;   
+    Products: number;   
 }
 
 interface ICart {
@@ -26,10 +24,8 @@ declare var cartApiUrl: string;
 
 function updatePrice(price: IPrice) {
     $("#delivery").text(`${price.Delivery} €`);
-    $("#productDiscount").text(`${price.ProductDiscount} €`);
-    $("#deliveryDiscount").text(`${price.DeliveryDiscount} €`);
-
-    var total = price.ProductTotal + price.Delivery - price.DeliveryDiscount - price.ProductDiscount;
+    $("#products").text(`${price.Products} €`);
+    var total = price.Products + price.Delivery;
     $("#total").text(`${total} €`);
 }
 
