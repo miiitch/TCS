@@ -25,6 +25,7 @@ namespace TalentAgileShop.Cart.Tests
 
 
         [Test]
+        [Ignore("LAB1")]
         public void Empty_Cart_Price_Is_Zero()
         {
             var products = new List<Tuple<Product, int>>();
@@ -38,6 +39,7 @@ namespace TalentAgileShop.Cart.Tests
 
 
         [Test]
+        [Ignore("LAB1")]
         [TestCase(100,1)]
         [TestCase(200, 2)]
         [TestCase(300, 3)]
@@ -54,7 +56,9 @@ namespace TalentAgileShop.Cart.Tests
             Check.That(price.Products).IsEqualTo(count * productPrice);
 
         }
+
         [Test]
+        [Ignore("LAB1")]
         [TestCase(ProductSize.Small,1,5)]
         [TestCase(ProductSize.Medium,1, 5)]
         [TestCase(ProductSize.Large,1,10)]
@@ -78,6 +82,7 @@ namespace TalentAgileShop.Cart.Tests
        
 
         [Test]
+        [Ignore("LAB1")]
         public void Max_Delivery_Price_Is_50()
         {
             var products = new List<Tuple<Product, int>>();
@@ -91,6 +96,7 @@ namespace TalentAgileShop.Cart.Tests
         }
 
         [Test]
+        [Ignore("LAB1")]
         public void FREESMALL_Discount()
         {
             var products = new List<Tuple<Product, int>>();
@@ -105,6 +111,7 @@ namespace TalentAgileShop.Cart.Tests
         }
 
         [Test]
+        [Ignore("LAB1")]
         public void _5BIG_Discount_On_Large()
         {
             var products = new List<Tuple<Product, int>>();
@@ -118,6 +125,7 @@ namespace TalentAgileShop.Cart.Tests
         }
 
         [Test]
+        [Ignore("LAB1")]
         public void _5BIG_Discount_On_XLarge()
         {
             var products = new List<Tuple<Product, int>>();
@@ -130,24 +138,5 @@ namespace TalentAgileShop.Cart.Tests
             Check.That(price.Products).IsEqualTo(95);
         }
 
-    }
-
-    public static class CartHelper
-    {
-        public static void AddProduct(this List<Tuple<Product, int>> products, decimal price, int count = 1, ProductSize size = ProductSize.Small, string category = "No category", string country = "Nowhere")
-        {
-            var p = new Product()
-            {
-                Category = new Category() { Name = category },
-                Description = null,
-                Id = Guid.NewGuid().ToString(),
-                Price = price,
-                Image = null,
-                Name = "No name",
-                Origin = new Country() { Name = country },
-                Size = size
-            };
-            products.Add(Tuple.Create(p, count));
-        }
     }
 }

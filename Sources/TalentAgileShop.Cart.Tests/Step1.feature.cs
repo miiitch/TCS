@@ -66,11 +66,11 @@ namespace TalentAgileShop.Cart.Tests
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Simple product and delivery price")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void SimpleProductAndDeliveryPrice()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Simple product and delivery price", new string[] {
-                        "mytag"});
+                        "ignore"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -89,22 +89,24 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Complex cart")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ComplexCart()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart", ((string[])(null)));
-#line 12
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart", new string[] {
+                        "ignore"});
 #line 13
- testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 14
- testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
- testRunner.And("1 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("1 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.Then("the product price should be 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
+ testRunner.Then("the product price should be 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
  testRunner.Then("the delivery price should be 35", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -112,24 +114,26 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Complex cart with FREESMALL discount")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ComplexCartWithFREESMALLDiscount()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart with FREESMALL discount", ((string[])(null)));
-#line 20
-this.ScenarioSetup(scenarioInfo);
-#line 21
- testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart with FREESMALL discount", new string[] {
+                        "ignore"});
 #line 22
- testRunner.And("the discountCode FREESMALL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 23
- testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
- testRunner.And("1 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the discountCode FREESMALL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 25
- testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 26
- testRunner.Then("the product price should be 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("1 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
+ testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.Then("the product price should be 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
  testRunner.Then("the delivery price should be 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -137,20 +141,22 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Complex cart with delivery price higher that 50")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ComplexCartWithDeliveryPriceHigherThat50()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart with delivery price higher that 50", ((string[])(null)));
-#line 29
-this.ScenarioSetup(scenarioInfo);
-#line 30
- testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Complex cart with delivery price higher that 50", new string[] {
+                        "ignore"});
 #line 31
- testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 32
- testRunner.And("3 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("a cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 33
- testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("3 Small product with a price of 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 34
+ testRunner.And("3 ExtraLarge product with a price of 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+ testRunner.When("I calculate the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
  testRunner.Then("the delivery price should be 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartHelper.cs" />
     <Compile Include="InMemoryCartTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Step1.feature.cs">

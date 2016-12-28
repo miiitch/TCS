@@ -13,6 +13,7 @@ namespace TalentAgileShop.Cart.Tests
     {
 
         [Test]
+       
         public void Repository_Always_Returns_A_Non_Null_Cart()
         {
             var repository = new InMemoryCartRepository();
