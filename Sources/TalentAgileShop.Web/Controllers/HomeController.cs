@@ -34,15 +34,32 @@ namespace TalentAgileShop.Web.Controllers
         }
 
         [System.Web.Mvc.Route("catalog")]
-        public ActionResult Catalog([FromUri]string view)
+        public ActionResult Catalog([FromUri]string view,[FromUri]string category)
         {
-            var products = _dataContext.Products.Include(p => p.Category).Include(p => p.Origin).OrderBy(p => p.Name).ToList();
+            if (!_featureSet.CatalogCategories)
+            {
+                category = null;
+            }
 
 
-            var viewModel = new CatalogViewModel(products);
-            viewModel.AllowThumbnailView = _featureSet.AllowThumbnailView;
+            var query = _dataContext.Products.Include(p => p.Category);
+            if (category != null)
+            {
+                query = query.Where(p => p.Category.Name == category);
+            }
+            
+                
+                
+            var products = query.Include(p => p.Origin).OrderBy(p => p.Name).ToList();
+            var categories = _dataContext.Categories.OrderBy(c => c.Name).Select(c => c.Name).ToList();
 
-            if (_featureSet.AllowThumbnailView && view == "thumbnail")
+            var viewModel = new CatalogViewModel(products, categories)
+            {
+                ThumbnailViewAvailable = _featureSet.ThumbnailView,
+                ShowCategories = _featureSet.CatalogCategories,
+                CurrentCategory = category,
+            };
+            if (_featureSet.ThumbnailView && view == "thumbnail")
             {
                 viewModel.CurrentViewType = CatalogViewModel.ViewType.Thumbnail;
             }

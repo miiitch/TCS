@@ -8,7 +8,7 @@ namespace TalentAgileShop.Model
 {
     public class FeatureSet
     {
-        public bool AllowThumbnailView { get; set; }
-
+        public bool ThumbnailView { get; set; }
+        public bool CatalogCategories { get; set; }
     }
 }

@@ -9,7 +9,8 @@ namespace TalentAgileShop.Web
 
         public static void Initialize(FeatureSet featureSet)
         {
-            featureSet.AllowThumbnailView = false;
+            featureSet.ThumbnailView = false;
+            featureSet.CatalogCategories = false;
         }
     }
 }
