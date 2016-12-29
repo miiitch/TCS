@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.Http;
 using TalentAgileShop.Model;
 using TalentAgileShop.Web.Models;
 
 namespace TalentAgileShop.Web.Controllers
 {
-    [RoutePrefix("")]
+    [System.Web.Mvc.RoutePrefix("")]
     public class HomeController : Controller
     {
         private readonly FeatureSet _featureSet;
@@ -26,25 +27,35 @@ namespace TalentAgileShop.Web.Controllers
         }
 
 
-        [Route("")]
+        [System.Web.Mvc.Route("")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("catalog")]
-        public ActionResult Catalog()
+        [System.Web.Mvc.Route("catalog")]
+        public ActionResult Catalog([FromUri]string view)
         {
             var products = _dataContext.Products.Include(p => p.Category).Include(p => p.Origin).OrderBy(p => p.Name).ToList();
 
 
             var viewModel = new CatalogViewModel(products);
+            viewModel.AllowThumbnailView = _featureSet.AllowThumbnailView;
 
+            if (_featureSet.AllowThumbnailView && view == "thumbnail")
+            {
+                viewModel.CurrentViewType = CatalogViewModel.ViewType.Thumbnail;
+            }
+            else
+            {
+                viewModel.CurrentViewType = CatalogViewModel.ViewType.List;
+            }
+        
             return View(viewModel);
             
         }
 
-        [Route("products/{id}")]
+        [System.Web.Mvc.Route("products/{id}")]
         public ActionResult Product(string id)
         {
             var product =
@@ -62,7 +73,7 @@ namespace TalentAgileShop.Web.Controllers
         }
 
 
-        [Route("products/{id}/image")]
+        [System.Web.Mvc.Route("products/{id}/image")]
         public ActionResult ProductImage(string id)
         {
             var product =
@@ -77,7 +88,7 @@ namespace TalentAgileShop.Web.Controllers
         }
 
 
-        [Route("cart")]
+        [System.Web.Mvc.Route("cart")]
         public ActionResult Cart()
         {
             var basket = GetBasket();

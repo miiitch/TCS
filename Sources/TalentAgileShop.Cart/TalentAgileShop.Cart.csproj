@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartPriceCalculator.cs" />
+    <Compile Include="EnumerableHelpers.cs" />
     <Compile Include="InMemoryCartRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

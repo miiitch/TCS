@@ -1,17 +1,39 @@
-﻿@model TalentAgileShop.Web.Models.CatalogViewModel
+﻿@using TalentAgileShop.Web.Models
+@model TalentAgileShop.Web.Models.CatalogViewModel
 @{
     ViewBag.Title = "Catalog";
 }
 
-<div class="container-fluid">
-    @foreach (var product in Model.Products)
+
+@if (Model.CurrentViewType == CatalogViewModel.ViewType.List)
+{
+
+    @Html.Partial("CatalogList", Model.Products)
+
+
+
+    if (Model.AllowThumbnailView)
     {
-
-        <div class="row">
-            <div class="col-md-10"><a href="@Url.Action("Product",new {id = product.Id})">@product.Name</a></div>
-            <div class="col-md-2">@product.Price</div>
+        <div class="container" style="margin-top: 50px">
+            <div class="row">
+                <div>
+                    Go to <a href="@Url.Action("Catalog","Home",new {view = "thumbnail"})">thumbnail View</a>
+                </div>
+            </div>
         </div>
-
     }
 
-</div>
+}
+else
+{
+    @Html.Partial("CatalogThumbnail", Model.Products)
+
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div>
+                Go to <a href="@Url.Action("Catalog","Home")">List View</a>
+            </div>
+        </div>
+    </div>
+}
+
