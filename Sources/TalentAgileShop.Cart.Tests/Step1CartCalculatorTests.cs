@@ -23,7 +23,7 @@ namespace TalentAgileShop.Cart.Tests
     
 
 
-
+        // 1. remove the Ignore attribute and write the algorithm 
         [Test]
         [Ignore("LAB1")]
         public void Empty_Cart_Price_Is_Zero()
@@ -38,6 +38,7 @@ namespace TalentAgileShop.Cart.Tests
         }
 
 
+        // 2. remove the Ignore attribute and write the algorithm 
         [Test]
         [Ignore("LAB1")]
         [TestCase(100,1)]
@@ -79,8 +80,8 @@ namespace TalentAgileShop.Cart.Tests
             Check.That(price.Delivery).IsEqualTo(delivery);
         }
 
-       
 
+        // 3. remove the Ignore attribute and write the algorithm 
         [Test]
         [Ignore("LAB1")]
         public void Max_Delivery_Price_Is_50()
@@ -95,48 +96,17 @@ namespace TalentAgileShop.Cart.Tests
             Check.That(price.Delivery).IsEqualTo(50);
         }
 
+        // 4. Write a test for FREESMALL Discount first and then write the algorithm 
         [Test]
         [Ignore("LAB1")]
         public void FREESMALL_Discount()
         {
-            var products = new List<Tuple<Product, int>>();
-
-            products.AddProduct(0, 1, ProductSize.Small);
-            products.AddProduct(0, 1, ProductSize.Medium);
-
-
-            var price = _calculator.ComputePrice(products, "FREESMALL");
-
-            Check.That(price.Delivery).IsEqualTo(0);
+          // 
         }
 
-        [Test]
-        [Ignore("LAB1")]
-        public void _5BIG_Discount_On_Large()
-        {
-            var products = new List<Tuple<Product, int>>();
-
-            products.AddProduct(100, 1, ProductSize.Large);
-
-
-            var price = _calculator.ComputePrice(products, "5BIG");
-
-            Check.That(price.Products).IsEqualTo(95);
-        }
-
-        [Test]
-        [Ignore("LAB1")]
-        public void _5BIG_Discount_On_XLarge()
-        {
-            var products = new List<Tuple<Product, int>>();
-
-            products.AddProduct(100, 1, ProductSize.ExtraLarge);
-
-
-            var price = _calculator.ComputePrice(products, "5BIG");
-
-            Check.That(price.Products).IsEqualTo(95);
-        }
+      
+        // 5. Write  test(s) for 5BIG Discount first and the write the algorithm
+        
 
     }
 }
