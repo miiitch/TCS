@@ -16,7 +16,7 @@ namespace Repo
         public CartPrice ComputePrice(List<Tuple<Product, int>> products, string discountCode)
         {
             // Write cart price algorithm here
-            return CartPrice();
+            return new CartPrice();
 
 
         }
